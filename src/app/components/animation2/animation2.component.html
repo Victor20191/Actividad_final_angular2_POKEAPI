@@ -1,0 +1,25 @@
+<div class="grid-container">
+  <h1>Lista de Pokémon</h1>
+  @if (loading()) {
+    <div class="loader-area">
+      <div class="loader-container">
+        <span class="loader"></span>
+      </div>
+    </div>
+  } @else {
+    @if (selectedPokemonId() === null) {
+      @if (pokemonList().length > 0) {
+        <div class="pokemon-list" style="cursor: pointer;">
+          @for (pokemon of pokemonList(); track pokemon.id) {
+            <div class="pokemon-item" (click)="selectPokemon(pokemon.id)">
+              <img [src]="pokemon.image" [alt]="pokemon.name">
+              <p>{{ pokemon.name }}</p>
+            </div>
+          }
+        </div>
+      } @else {
+        <p>No se encontraron Pokémon</p>
+      }
+    }
+  }
+</div>
