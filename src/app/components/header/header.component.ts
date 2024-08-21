@@ -3,6 +3,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { ObservationsDialogComponent } from '../observations-dialog/observations-dialog.component';
 
 @Component({
   selector: 'app-header',
@@ -15,6 +17,10 @@ import { RouterModule } from '@angular/router';
       </a>
       <span class="app-title">Pokémon App</span>
       <span class="spacer"></span>
+      <button mat-button (click)="openObservationsDialog()">
+        <mat-icon>note</mat-icon>
+        Observaciones
+      </button> 
     </mat-toolbar>
   `,
   styles: [`
@@ -55,4 +61,16 @@ import { RouterModule } from '@angular/router';
     }
   `]
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+  constructor(public dialog: MatDialog) {}
+
+  openObservationsDialog(): void {
+    const dialogRef = this.dialog.open(ObservationsDialogComponent, {
+      width: '250px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+}
