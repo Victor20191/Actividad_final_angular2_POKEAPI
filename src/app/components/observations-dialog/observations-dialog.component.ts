@@ -10,7 +10,7 @@ import { MatDialogModule } from '@angular/material/dialog';
   template: `
     <h2 mat-dialog-title>Observaciones</h2>
     <mat-dialog-content>
-      <p> <strong>Víctor Rivera</strong> <strong>Grupo: 20</strong></p>
+      <p> Nombre: <strong>Víctor Rivera </strong>  Grupo: <strong>20</strong></p>
     </mat-dialog-content>
     <mat-dialog-actions>
       <button mat-button (click)="onNoClick()">Cerrar</button>
